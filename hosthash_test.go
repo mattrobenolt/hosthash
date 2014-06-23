@@ -105,29 +105,3 @@ func BenchmarkFallToDefault(b *testing.B) {
 		h.Get("mattrobenolt.com")
 	}
 }
-
-func BenchmarkString(b *testing.B) {
-	m := map[string]int{
-		"2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae": 1,
-	}
-	for i := 0; i < b.N; i++ {
-		_ = m[hex.EncodeToString([]byte{44, 38, 180, 107, 104, 255, 198, 143, 249, 155, 69, 60, 29, 48, 65, 52, 19, 66, 45, 112, 100, 131, 191, 160, 249, 138, 94, 136, 98, 102, 231, 174})]
-	}
-}
-
-func BenchmarkArray(b *testing.B) {
-	m := map[[32]byte]int{
-		[32]byte{44, 38, 180, 107, 104, 255, 198, 143, 249, 155, 69, 60, 29, 48, 65, 52, 19, 66, 45, 112, 100, 131, 191, 160, 249, 138, 94, 136, 98, 102, 231, 174}: 1,
-	}
-	for i := 0; i < b.N; i++ {
-		_ = m[[32]byte{44, 38, 180, 107, 104, 255, 198, 143, 249, 155, 69, 60, 29, 48, 65, 52, 19, 66, 45, 112, 100, 131, 191, 160, 249, 138, 94, 136, 98, 102, 231, 174}]
-	}
-}
-
-func BenchmarkBytes(b *testing.B) {
-	foo := []byte("abcdefg")
-	bar := []byte("abcdefg")
-	for i := 0; i < b.N; i++ {
-		_ = bytes.Equal(foo, bar)
-	}
-}
