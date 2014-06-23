@@ -1,8 +1,6 @@
 package hosthash
 
 import "testing"
-import "bytes"
-import "encoding/hex"
 
 func TestRules(t *testing.T) {
 	var tests = []string{
