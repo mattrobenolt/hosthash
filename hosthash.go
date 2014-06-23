@@ -4,6 +4,7 @@ import (
 	"errors"
 	"regexp"
 	"strings"
+	"sync"
 )
 
 var (
@@ -23,6 +24,9 @@ type Hash struct {
 	suffix   map[string]interface{}
 	patterns []*pattern
 	default_ interface{}
+
+	// Locker for adding patterns into the Hash
+	sync.Mutex
 }
 
 func New() *Hash {
@@ -30,6 +34,9 @@ func New() *Hash {
 }
 
 func (h *Hash) Add(key string, value interface{}) error {
+	h.Lock()
+	defer h.Unlock()
+
 	l := len(key)
 
 	if l == 0 {
