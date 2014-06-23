@@ -7,9 +7,9 @@ import (
 )
 
 var (
-	ERR_TOO_SHORT = errors.New("hash: must be more than 0 characters")
-	ERR_INVALID   = errors.New("hash: invalid key name")
-	ERR_DUPLICATE = errors.New("hash: duplicate key")
+	ERR_TOO_SHORT = errors.New("hosthash: must be more than 0 characters")
+	ERR_INVALID   = errors.New("hosthash: invalid key name")
+	ERR_DUPLICATE = errors.New("hosthash: duplicate key")
 )
 
 type pattern struct {
